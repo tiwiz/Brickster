@@ -48,7 +48,7 @@ private fun LegoSetCard(it: LegoSet, onClick: (LegoSet) -> Unit = {}) {
                 Container(expanded = true, alignment = Alignment.Center, constraints = DpConstraints(maxHeight = 200.dp)) {
                     Image(painter = ImagePainter(image = image))
                 }
-                ListItem(text = it.name, overlineText = it.id, secondaryText = it.theme)
+                ListItem(text = it.name, overlineText = it.id, secondaryText = "${it.theme} (${it.year})")
             }
         }
     }
