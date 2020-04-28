@@ -1,10 +1,7 @@
 package com.rob.legopedia
 
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.ui.core.setContent
 import com.rob.legopedia.domain.dependencies.appComponent
@@ -51,21 +48,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             setContent {
                 SetView(data, onImeAction) {
-                    showDetail(it.detailUrl)
                 }
             }
         }
         isDetail = true
-    }
-
-    private fun showDetail(detailUrl: String) {
-        val tabsIntent =
-            CustomTabsIntent.Builder()
-                .addDefaultShareMenuItem()
-                .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
-                .build()
-
-        tabsIntent.launchUrl(this, Uri.parse(detailUrl))
     }
 
     override fun onBackPressed() {

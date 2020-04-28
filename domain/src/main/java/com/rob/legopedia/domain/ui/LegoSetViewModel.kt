@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rob.legopedia.domain.network.RebrickableService
+import com.rob.legopedia.domain.network.LegoService
 import com.rob.legopedia.domain.ui.LCE.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LegoSetViewModel @Inject constructor(private val rebrickableService: RebrickableService) : ViewModel() {
+class LegoSetViewModel @Inject constructor(private val legoService: LegoService) : ViewModel() {
 
     private val mutableLegoSets = MutableLiveData<LegoSetLCE>()
 
@@ -21,7 +21,7 @@ class LegoSetViewModel @Inject constructor(private val rebrickableService: Rebri
 
         viewModelScope.launch {
             try {
-                val results = rebrickableService.searchSet(searchKey).toLegoSets()
+                val results = legoService.searchSet(searchKey).toLegoSets()
                 mutableLegoSets.postValue(Complete(results))
             } catch(e: Exception) {
                 mutableLegoSets.postValue(Error(e))

@@ -8,5 +8,6 @@ data class LegoSet(
     val id: String,
     val name: String,
     val image: Bitmap?,
-    val detailUrl: String
+    val theme: String,
+    val year: Int
 )

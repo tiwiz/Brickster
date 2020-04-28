@@ -1,3 +1,5 @@
+@file:Suppress("ArrayInDataClass")
+
 package com.rob.legopedia.domain.network
 
 import kotlinx.serialization.SerialName
@@ -21,4 +23,35 @@ data class ResponseDTO(
     val next: String?,
     val previous: String?,
     val results: Array<LegoSetDTO>
+)
+
+/**
+ * LEGO Service
+ * */
+
+@Serializable
+data class InstructionsDTO(
+    @SerialName("description") val description: String,
+    @SerialName("pdfLocation") val pdfUrl: String,
+    @SerialName("downloadSize") val downloadSize: String,
+    @SerialName("frontpageInfo") val instructionsCover: String,
+    @SerialName("oNum") val bookNumber: Int,
+    @SerialName("isAlternative") val isAlternative: Boolean
+)
+
+@Serializable
+data class ProductDTO(
+    @SerialName("productId") val setId: String,
+    @SerialName("productName") val setName: String,
+    @SerialName("productImage") val setImage: String,
+    @SerialName("themeName") val themeName: String,
+    @SerialName("launchYear") val launchYear: Int,
+    @SerialName("buildingInstructions") val instructions: Array<InstructionsDTO>
+)
+
+@Serializable()
+data class LegoResponseDTO(
+    @SerialName("count") val count: Int,
+    @SerialName("totalCount") val totalCount: Int,
+    @SerialName("products") val sets: Array<ProductDTO>
 )

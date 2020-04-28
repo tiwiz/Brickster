@@ -6,7 +6,6 @@ import androidx.ui.core.Modifier
 import androidx.ui.foundation.AdapterList
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Image
-import androidx.ui.graphics.Color
 import androidx.ui.graphics.asImageAsset
 import androidx.ui.graphics.painter.ImagePainter
 import androidx.ui.layout.Column
@@ -49,7 +48,7 @@ private fun LegoSetCard(it: LegoSet, onClick: (LegoSet) -> Unit = {}) {
                 Container(expanded = true, alignment = Alignment.Center, constraints = DpConstraints(maxHeight = 200.dp)) {
                     Image(painter = ImagePainter(image = image))
                 }
-                ListItem(text = it.name, overlineText = it.id, secondaryText = it.detailUrl)
+                ListItem(text = it.name, overlineText = it.id, secondaryText = it.theme)
             }
         }
     }
@@ -60,8 +59,8 @@ private fun LegoSetCard(it: LegoSet, onClick: (LegoSet) -> Unit = {}) {
 fun Preview_SetView() {
 
     val items = listOf(
-        LegoSet("1", "Set 1", null, "www.google.it"),
-        LegoSet("2", "Set 2", null, "www.google.it")
+        LegoSet("1", "Set 1", null, "tema", 2020),
+        LegoSet("2", "Set 2", null, "tema", 2020)
     )
 
     SetView(items)
