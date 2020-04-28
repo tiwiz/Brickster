@@ -2,6 +2,7 @@ package com.rob.legopedia
 
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
+import androidx.ui.foundation.Box
 import androidx.ui.foundation.Image
 import androidx.ui.graphics.painter.ImagePainter
 import androidx.ui.layout.*
@@ -16,7 +17,7 @@ fun WaitingScreen() {
     MaterialTheme {
         Row(arrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
             Column(arrangement = Arrangement.Center, modifier = Modifier.fillMaxHeight()) {
-                Container(width = 200.dp, height = 200.dp) {
+                Box(modifier = Modifier.preferredSize(width = 200.dp, height = 200.dp)) {
                     Image(painter = ImagePainter(image = imageResource(id = R.drawable.ic_loading)))
                 }
                 LinearProgressIndicator()
