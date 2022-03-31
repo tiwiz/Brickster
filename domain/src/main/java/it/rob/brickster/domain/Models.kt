@@ -28,7 +28,7 @@ data class ResponseDTO(
  * */
 
 @Serializable
-data class InstructionsDTO(
+data class Instructions(
     @SerialName("description") val description: String,
     @SerialName("pdfLocation") val pdfUrl: String,
     @SerialName("downloadSize") val downloadSize: String,
@@ -38,18 +38,32 @@ data class InstructionsDTO(
 )
 
 @Serializable
-data class ProductDTO(
+data class Product(
     @SerialName("productId") val setId: String,
     @SerialName("productName") val setName: String,
     @SerialName("productImage") val setImage: String,
     @SerialName("themeName") val themeName: String,
     @SerialName("launchYear") val launchYear: Int,
-    @SerialName("buildingInstructions") val instructions: List<InstructionsDTO>
+    @SerialName("buildingInstructions") val instructions: List<Instructions>
 )
 
 @Serializable
-data class LegoResponseDTO(
+data class LegoResponse(
     @SerialName("count") val count: Int,
     @SerialName("totalCount") val totalCount: Int,
-    @SerialName("products") val sets: List<ProductDTO>
+    @SerialName("products") val sets: List<Product>
 )
+
+/**
+ * LCE
+ */
+
+sealed class LCE<out T>(
+    val data: T? = null,
+    val error: Throwable? = null
+) {
+
+    object Loading : LCE<Nothing>()
+    class Complete<T>(data: T) : LCE<T>(data = data)
+    class Error(throwable: Throwable) : LCE<Nothing>(error = throwable)
+}
