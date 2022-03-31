@@ -1,5 +1,6 @@
 package it.rob.brickster.domain
 
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
 
 @Serializable
